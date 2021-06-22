@@ -1,53 +1,24 @@
-import { Request, Response } from "express";
-import { connection } from "../connection/connection";
-
-import User from "../entity/User";
+import { Request, Response } from 'express';
+import { UserRepository } from '../repository/user.repository';
 class UserController {
-  public getAllCustomers(req: Request, res: Response) {
-    connection
-      .then(async (conn) => {
-        return res.json({ message: "Customer Get Request", details: conn });
-      })
-      .catch((error) => {
-        res.json(error);
-      });
+  private userRepository: UserRepository;
+  constructor() {
+    this.userRepository = new UserRepository();
   }
-  public addCustomer(req: Request, res: Response) {
-    connection
-      .then(async (conn) => {
-        res.json({ message: "Successfully Saved." });
-      })
-      .catch((error) => {
-        // console.error("Error ", error);
-        res.json(error);
-      });
+  public async getAllCustomers(req: Request, res: Response): Promise<unknown> {
+    return res.json({ message: 'Customer Get Request' });
   }
-  public updateCustomer(req: Request, res: Response) {
-    connection
-      .then(async (conn) => {
-        res.json({ message: "Successfully Updated." });
-      })
-      .catch((error) => {
-        res.json(error);
-      });
+  public async addCustomer(req: Request, res: Response): Promise<unknown> {
+    return res.json({ message: 'Successfully Saved.' });
   }
-  public getCustomerById(req: Request, res: Response) {
-    connection
-      .then(async (conn) => {
-        res.json("Get Customer By Id");
-      })
-      .catch((error) => {
-        res.json(error);
-      });
+  public async updateCustomer(req: Request, res: Response): Promise<unknown> {
+    return res.json({ message: 'Successfully Updated.' });
   }
-  public deleteCustomer(req: Request, res: Response) {
-    connection
-      .then(async (conn) => {
-        res.json({ message: "Successfully Removed." });
-      })
-      .catch((error) => {
-        res.json(error);
-      });
+  public async getCustomerById(req: Request, res: Response): Promise<unknown> {
+    return res.json('Get Customer By Id');
+  }
+  public async deleteCustomer(req: Request, res: Response): Promise<unknown> {
+    return res.json({ message: 'Successfully Removed.' });
   }
 }
 export { UserController };
