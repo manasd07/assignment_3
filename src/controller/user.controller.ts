@@ -21,4 +21,5 @@ class UserController {
     return res.json({ message: 'Successfully Removed.' });
   }
 }
+asds;
 export { UserController };
