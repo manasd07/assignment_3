@@ -1,18 +1,14 @@
 import { Request, Response } from 'express';
-import { UserRepository } from '../repository/user.repository';
+import { userRepository } from '../repository/user.repository';
 class UserController {
-  private userRepository: UserRepository;
-  constructor() {
-    this.userRepository = new UserRepository();
-  }
   public async getAllCustomers(req: Request, res: Response): Promise<unknown> {
-    return res.json({ message: 'Customer Get Request' });
+    return await userRepository.getAllCustomers(req, res);
   }
   public async addCustomer(req: Request, res: Response): Promise<unknown> {
-    return res.json({ message: 'Successfully Saved.' });
+    return await userRepository.addCustomer(req, res);
   }
   public async updateCustomer(req: Request, res: Response): Promise<unknown> {
-    return res.json({ message: 'Successfully Updated.' });
+    return await userRepository.updateCustomer(req, res);
   }
   public async getCustomerById(req: Request, res: Response): Promise<unknown> {
     return res.json('Get Customer By Id');

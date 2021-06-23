@@ -10,84 +10,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
-const connection_1 = require("../connection/connection");
-const User_1 = require("../entity/User");
+const user_repository_1 = require("../repository/user.repository");
 class UserController {
     getAllCustomers(req, res) {
-        connection_1.connection
-            .then((connectionDetails) => __awaiter(this, void 0, void 0, function* () {
-            return res.json({ message: "Customer Get Request", details: connectionDetails });
-        }))
-            .catch((error) => {
-            // console.error("Error ", error);
-            res.json(error);
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield user_repository_1.userRepository.getAllCustomers(req, res);
         });
     }
     addCustomer(req, res) {
-        connection_1.connection
-            .then((conn) => __awaiter(this, void 0, void 0, function* () {
-            const requestSuperHero = req.body;
-            const requestPower = requestSuperHero.power;
-            const superHero = new User_1.default();
-            superHero.firstName = requestSuperHero.name;
-            superHero.lastName = "";
-            requestPower.forEach((reqPower) => {
-                const power = new User_1.default();
-                power.firstName = reqPower;
-            });
-            yield conn.manager.save(superHero);
-            res.json({ message: "Successfully Saved." });
-        }))
-            .catch((error) => {
-            // console.error("Error ", error);
-            res.json(error);
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield user_repository_1.userRepository.addCustomer(req, res);
         });
     }
-    updateSuperHero(req, res) {
-        connection_1.connection
-            .then((conn) => __awaiter(this, void 0, void 0, function* () {
-            const superHero = yield conn.manager.findOne(User_1.default, req.params.superHeroId);
-            const requestSuperHero = req.body;
-            const requestPower = requestSuperHero.power;
-            superHero.firstName = requestSuperHero.name;
-            superHero.lastName = "";
-            // delete previous power of our super-hero
-            // add new power to our super-hero
-            requestPower.forEach((reqPower) => {
-                const power = new User_1.default();
-                power.firstName = reqPower;
-            });
-            yield conn.manager.save(superHero);
-            res.json({ message: "Successfully Updated." });
-        }))
-            .catch((error) => {
-            // console.error("Error ", error);
-            res.json(error);
+    updateCustomer(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield user_repository_1.userRepository.updateCustomer(req, res);
         });
     }
-    getSuperHeroById(req, res) {
-        connection_1.connection
-            .then((conn) => __awaiter(this, void 0, void 0, function* () {
-            const superHero = yield conn.manager.findOne(User_1.default, req.params.superHeroId);
-            res.json(superHero);
-        }))
-            .catch((error) => {
-            // console.error("Error ", error);
-            res.json(error);
+    getCustomerById(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return res.json('Get Customer By Id');
         });
     }
-    deleteSuperHero(req, res) {
-        connection_1.connection
-            .then((conn) => __awaiter(this, void 0, void 0, function* () {
-            const superHero = yield conn.manager.findOne(User_1.default, req.params.superHeroId);
-            // delete all power first
-            // delete our super-hero
-            // await connection.manager.remove(SuperHero, {id: req.params.superHeroId});
-            res.json({ message: "Successfully Removed." });
-        }))
-            .catch((error) => {
-            // console.error("Error ", error);
-            res.json(error);
+    deleteCustomer(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return res.json({ message: 'Successfully Removed.' });
         });
     }
 }

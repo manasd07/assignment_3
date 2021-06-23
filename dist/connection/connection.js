@@ -16,4 +16,5 @@ exports.connection = typeorm_1.createConnection({
     synchronize: true,
     logging: false,
 });
+exports.default = exports.connection;
 //# sourceMappingURL=connection.js.map

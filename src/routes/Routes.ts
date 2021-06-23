@@ -9,7 +9,10 @@ class Routes {
     app.get('/', async (req: Request, res: Response): Promise<unknown> => {
       return res.json({ message: 'GET request successfull' });
     });
-    app.get('/customer/signup', this.userController.addCustomer);
+    app.post('/customer/signup', this.userController.addCustomer);
+    app.get('/customer/update/:id',this.userController.updateCustomer);
+    app.get('/customer', this.userController.getAllCustomers);
+    app.get('/customer/signout');
   }
 }
 export { Routes };

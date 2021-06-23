@@ -13,3 +13,4 @@ export const connection = createConnection({
   synchronize: true,
   logging: false,
 });
+export default connection;

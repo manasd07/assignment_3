@@ -16,10 +16,13 @@ class Routes {
         this.userController = new user_controller_1.UserController();
     }
     routes(app) {
-        app.get("/", (req, res) => __awaiter(this, void 0, void 0, function* () {
-            return res.json({ message: "GET request successfull" });
+        app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
+            return res.json({ message: 'GET request successfull' });
         }));
-        app.get("/customer/signup", this.userController.addCustomer);
+        app.post('/customer/signup', this.userController.addCustomer);
+        app.get('/customer/update/:id', this.userController.updateCustomer);
+        app.get('/customer', this.userController.getAllCustomers);
+        app.get('/customer/signout');
     }
 }
 exports.Routes = Routes;

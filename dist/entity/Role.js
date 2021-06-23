@@ -18,7 +18,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Role.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column({ name: "role_name" }),
+    typeorm_1.Column({ name: "role_name", unique: true }),
     __metadata("design:type", String)
 ], Role.prototype, "roleName", void 0);
 Role = __decorate([
