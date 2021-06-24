@@ -10,10 +10,10 @@ class Routes {
       return res.json({ message: 'GET request successfull' });
     });
     app.post('/seller/signup', this.userController.addSeller);
-    app.post('/customer/signup',this.userController.addCustomer);
+    app.post('/customer/signup', this.userController.addCustomer);
     app.get('/customers', this.userController.getAllCustomers);
-    app.get('/sellers',this.userController.getAllSellers);
-    app.get('/user/:id',this.userController.getUserById);
+    app.get('/sellers', this.userController.getAllSellers);
+    app.get('/user/:id', this.userController.getUserById);
     app.post('/user/login');
   }
 }

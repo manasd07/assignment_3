@@ -21,9 +21,8 @@ export class User {
   /**
    * Relation with Roles
    */
-  @ManyToMany(() => Role,(role)=>role.users)
+  @ManyToMany(() => Role, (role) => role.users)
   @JoinTable()
   roles: Role[];
-  
 }
 export default User;

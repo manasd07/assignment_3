@@ -9,21 +9,15 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "lint-staged": {
-    "*.{ts}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
   "scripts": {
     "prebuild": "npm run format",
     "build": "tsc",
-    "pre-commit": "lint-staged",
+    "pre-commit": "npm run lint && npm run format",
     "prestart": "npm run build",
     "start": "nodemon ./src/index.ts --exec ts-node babel-node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix"
+    "format": "prettier src/**/*.ts --write"
   },
   "author": "Manas Dwivedi",
   "license": "ISC",
@@ -37,7 +31,6 @@
     "express": "^4.17.1",
     "husky": "^4.3.8",
     "joi": "^17.4.0",
-    "lint-staged": "^11.0.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",

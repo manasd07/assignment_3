@@ -4,9 +4,9 @@ export interface IUser {
   lastName: string;
   email: string;
   password: string;
-  roles:IRole[];
+  roles: IRole[];
 }
-export interface IRole{
-  id:number;
-  roleName:string;
+export interface IRole {
+  id: number;
+  roleName: string;
 }

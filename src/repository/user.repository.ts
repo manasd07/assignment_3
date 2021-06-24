@@ -84,8 +84,8 @@ export const userRepository = {
         if (!req.params.id) {
           return res.json({ message: 'Bad Request', error: 'Enter id to search' });
         }
-        const user = await userRepo.findOneOrFail(req.params.id,{
-          relations:["roles"]
+        const user = await userRepo.findOneOrFail(req.params.id, {
+          relations: ['roles'],
         });
         return res.json({ message: 'Success', data: user });
       } catch (error) {}
