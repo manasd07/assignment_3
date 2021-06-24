@@ -4,16 +4,22 @@ class UserController {
   public async getAllCustomers(req: Request, res: Response): Promise<unknown> {
     return await userRepository.getAllCustomers(req, res);
   }
+  public async getAllSellers(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.getAllSellers(req, res);
+  }
   public async addCustomer(req: Request, res: Response): Promise<unknown> {
     return await userRepository.addCustomer(req, res);
   }
-  public async updateCustomer(req: Request, res: Response): Promise<unknown> {
-    return await userRepository.updateCustomer(req, res);
+  public async addSeller(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.addSeller(req, res);
   }
-  public async getCustomerById(req: Request, res: Response): Promise<unknown> {
-    return res.json('Get Customer By Id');
+  public async updateUser(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.updateUser(req, res);
   }
-  public async deleteCustomer(req: Request, res: Response): Promise<unknown> {
+  public async getUserById(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.getUserById(req, res);
+  }
+  public async deleteUser(req: Request, res: Response): Promise<unknown> {
     return res.json({ message: 'Successfully Removed.' });
   }
 }

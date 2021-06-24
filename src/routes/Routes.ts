@@ -9,10 +9,12 @@ class Routes {
     app.get('/', async (req: Request, res: Response): Promise<unknown> => {
       return res.json({ message: 'GET request successfull' });
     });
-    app.post('/customer/signup', this.userController.addCustomer);
-    app.get('/customer/update/:id',this.userController.updateCustomer);
-    app.get('/customer', this.userController.getAllCustomers);
-    app.get('/customer/signout');
+    app.post('/seller/signup', this.userController.addSeller);
+    app.post('/customer/signup',this.userController.addCustomer);
+    app.get('/customers', this.userController.getAllCustomers);
+    app.get('/sellers',this.userController.getAllSellers);
+    app.get('/user/:id',this.userController.getUserById);
+    app.post('/user/login');
   }
 }
 export { Routes };
