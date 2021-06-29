@@ -1,7 +1,9 @@
 import { Request, Response, Application } from 'express';
 import { UserController } from '../controller/user.controller';
+
 class Routes {
   private userController: UserController;
+
   constructor() {
     this.userController = new UserController();
   }
@@ -11,10 +13,12 @@ class Routes {
     });
     app.post('/seller/signup', this.userController.addSeller);
     app.post('/customer/signup', this.userController.addCustomer);
+    app.post('/customer/add-seller-role/:id', this.userController.addSellerRole);
     app.get('/customers', this.userController.getAllCustomers);
     app.get('/sellers', this.userController.getAllSellers);
+    app.get('/users/list', this.userController.getAllUsers);
+    // app.post('user/login', this.userController.loginUser);
     app.get('/user/:id', this.userController.getUserById);
-    app.post('/user/login');
   }
 }
 export { Routes };

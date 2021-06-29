@@ -2,11 +2,16 @@ import passport from 'passport';
 import passportJwt from 'passport-jwt';
 import { User } from '../entity/User';
 import { JWT_SECRET } from '../utils/secrets';
-import { getManager } from 'typeorm';
+import connection from '../connection/connection';
+import { Repository } from 'typeorm';
+
+let userRepo: Repository<User>;
+connection.then((conn) => {
+  userRepo = conn.getRepository(User);
+});
 
 const JwtStrategy = passportJwt.Strategy;
 const ExtractJwt = passportJwt.ExtractJwt;
-const entityManager = getManager();
 
 passport.use(
   new JwtStrategy(
@@ -16,14 +21,13 @@ passport.use(
     },
     async function (jwtToken, done) {
       try {
-        const user = await entityManager.findOne(User, { email: jwtToken.email });
-        if (!user) {
-          return done(undefined, false);
-        }
-        return done(undefined, user, jwtToken);
+        const user = await userRepo.findOneOrFail({ id: jwtToken.id });
+        return done(null, user);
       } catch (error) {
-        return done(error, false);
+        return done(error);
       }
     }
   )
 );
+
+export default passport;

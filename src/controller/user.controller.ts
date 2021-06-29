@@ -7,8 +7,17 @@ class UserController {
   public async getAllSellers(req: Request, res: Response): Promise<unknown> {
     return await userRepository.getAllSellers(req, res);
   }
+  public async getAllUsers(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.getAllUsers(req, res);
+  }
   public async addCustomer(req: Request, res: Response): Promise<unknown> {
     return await userRepository.addCustomer(req, res);
+  }
+  public async loginUser(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.loginUser(req, res);
+  }
+  public async addSellerRole(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.addSellerRoleToCustomer(req, res);
   }
   public async addSeller(req: Request, res: Response): Promise<unknown> {
     return await userRepository.addSeller(req, res);
