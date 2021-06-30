@@ -11,13 +11,12 @@ class Routes {
     app.get('/', async (req: Request, res: Response): Promise<unknown> => {
       return res.json({ message: 'GET request successfull' });
     });
-    app.post('/seller/signup', this.userController.addSeller);
-    app.post('/customer/signup', this.userController.addCustomer);
-    app.post('/customer/add-seller-role/:id', this.userController.addSellerRole);
+    app.post('/users/signup', this.userController.addCustomer);
+    app.post('/users/add-seller-role/:id', this.userController.addSellerRole);
     app.get('/customers', this.userController.getAllCustomers);
     app.get('/sellers', this.userController.getAllSellers);
     app.get('/users/list', this.userController.getAllUsers);
-    // app.post('user/login', this.userController.loginUser);
+    app.post('user/login', this.userController.loginUser);
     app.get('/user/:id', this.userController.getUserById);
   }
 }
