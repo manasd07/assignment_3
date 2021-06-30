@@ -5,6 +5,7 @@ export interface IUser {
   email: string;
   password: string;
   roles: IRole[];
+  isActive: boolean;
 }
 export interface IRole {
   id: number;

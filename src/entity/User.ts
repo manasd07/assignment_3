@@ -14,6 +14,10 @@ export class User {
   public email: string;
   @Column()
   public password: string;
+  @Column({ name: 'is_active', default: false })
+  public isActive: boolean;
+  @Column({ name: 'verification_code' })
+  verificationCode: string;
   @BeforeInsert()
   async beforeInsert(): Promise<void> {
     this.password = await bcrypt.hash(this.password, BCRYPT_HASH_ROUND);

@@ -10,17 +10,17 @@ class UserController {
   public async getAllUsers(req: Request, res: Response): Promise<unknown> {
     return await userRepository.getAllUsers(req, res);
   }
-  public async addCustomer(req: Request, res: Response): Promise<unknown> {
-    return await userRepository.addCustomer(req, res);
+  public async verifyEmailAndSignUp(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.verifyEmailAndSignUp(req, res);
+  }
+  public async addUser(req: Request, res: Response): Promise<unknown> {
+    return await userRepository.addUser(req, res);
   }
   public async loginUser(req: Request, res: Response): Promise<unknown> {
     return await userRepository.loginUser(req, res);
   }
   public async addSellerRole(req: Request, res: Response): Promise<unknown> {
     return await userRepository.addSellerRoleToCustomer(req, res);
-  }
-  public async addSeller(req: Request, res: Response): Promise<unknown> {
-    return await userRepository.addSeller(req, res);
   }
   public async updateUser(req: Request, res: Response): Promise<unknown> {
     return await userRepository.updateUser(req, res);
@@ -29,7 +29,7 @@ class UserController {
     return await userRepository.getUserById(req, res);
   }
   public async deleteUser(req: Request, res: Response): Promise<unknown> {
-    return res.json({ message: 'Successfully Removed.' });
+    return await userRepository.deleteUser(req, res);
   }
 }
 export { UserController };
