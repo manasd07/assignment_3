@@ -1,7 +1,7 @@
 import { Request, Response, Application } from 'express';
 import { UserController } from '../controller/user.controller';
-import passport from "passport";
-import "../auth/passportHandler";
+import passport from 'passport';
+import '../auth/passportHandler';
 class Routes {
   private userController: UserController;
 
@@ -16,7 +16,7 @@ class Routes {
     app.post('/users/add-seller-role/:id', this.userController.addSellerRole);
     app.get('/customers', this.userController.getAllCustomers);
     app.get('/sellers', this.userController.getAllSellers);
-    app.get('/users/list',passport.authenticate("jwt",{session:false}), this.userController.getAllUsers);
+    app.get('/users/list', passport.authenticate('jwt', { session: false }), this.userController.getAllUsers);
     app.post('/users/login', this.userController.loginUser);
     app.get('/users/:id', this.userController.getUserById);
   }

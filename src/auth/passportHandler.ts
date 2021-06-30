@@ -19,7 +19,7 @@ passport.use(
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: JWT_SECRET,
     },
-    async function (jwtToken:any, done) {
+    async function (jwtToken: any, done) {
       try {
         const user = await userRepo.findOneOrFail({ id: jwtToken.id });
         return done(null, user);
@@ -29,4 +29,3 @@ passport.use(
     }
   )
 );
-

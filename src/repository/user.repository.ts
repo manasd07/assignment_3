@@ -7,7 +7,6 @@ import { Repository } from 'typeorm';
 import bcrypt from 'bcrypt';
 import { signJwt } from '../utils/helpers/jwt-helper';
 import { JWT_SECRET } from '../utils/secrets';
-import * as jwt from 'jsonwebtoken';
 
 let userRepo: Repository<User>, roleRepo: Repository<Role>;
 connection.then((conn) => {
@@ -39,7 +38,7 @@ export const userRepository = {
       if (!isMatch) {
         return res.status(400).json({ message: 'Failed', error: 'Invalid Credentials' });
       }
-      const token = signJwt({id:userFromDb.id,email:userFromDb.email}, JWT_SECRET, 3600);
+      const token = signJwt({ id: userFromDb.id, email: userFromDb.email }, JWT_SECRET, 3600);
       return res.status(200).json({
         message: 'Success',
         data: {
